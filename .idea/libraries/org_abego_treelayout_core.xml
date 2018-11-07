@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="org.abego.treelayout.core">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/org.abego.treelayout.core.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
