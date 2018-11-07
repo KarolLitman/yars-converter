@@ -1,15 +1,16 @@
 package org.antlr.v4.runtime.tree;
 
-import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.TurtleVisitor;
 
 
 public class main {
 
     public static void main(String[] args) throws Exception {
 
-        CharStream input = CharStreams.fromFileName("prefixes.yars");
+        CharStream input = CharStreams.fromFileName(args[0]);
 
         YARSLexer lexer = new YARSLexer(input);
         YARSParser parser = new YARSParser(new CommonTokenStream(lexer));
