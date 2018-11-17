@@ -1,4 +1,4 @@
-package org.antlr.v4.runtime.tree;// Generated from YARS.g4 by ANTLR 4.7.1
+package YARS;// Generated from YARS.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
