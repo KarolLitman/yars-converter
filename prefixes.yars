@@ -1,24 +1,22 @@
-ub1bL16C1_vm:{value:"ub1bL16C1"}
-1_jOB:{value:"1",datatype:<http://www.w3.org/2001/XMLSchema#integer>}
-(ub1bL16C1_vm)-[bla {vocab:<http://www.perceive.net/schemas/relationship/>}]->(1_jOB)
-green-goblin_kl6:{value:<http://example.org/#green-goblin>}
-Person_zAq:{value:<http://xmlns.com/foaf/0.1/Person>}
-(green-goblin_kl6)-[type {vocab:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>}]->(Person_zAq)
-spiderman_Y0W:{value:<http://example.org/#spiderman>}
-green-goblin_rBW:{value:<http://example.org/#green-goblin>}
-(spiderman_Y0W)-[enemyOf {vocab:<http://www.perceive.net/schemas/relationship/>}]->(green-goblin_rBW)
-spiderman_3Jp:{value:<http://example.org/#spiderman>}
-Spiderman_53A:{value:"Spiderman",datatype:<http://www.w3.org/2001/XMLSchema#string>}
-(spiderman_3Jp)-[name {vocab:<http://xmlns.com/foaf/0.1/>}]->(Spiderman_53A)
-spiderman_087:{value:<http://example.org/#spiderman>}
-Person_kDK:{value:<http://xmlns.com/foaf/0.1/Person>}
-(spiderman_087)-[type {vocab:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>}]->(Person_kDK)
-green-goblin_2Q1:{value:<http://example.org/#green-goblin>}
-spiderman_V5B:{value:<http://example.org/#spiderman>}
-(green-goblin_2Q1)-[enemyOf {vocab:<http://www.perceive.net/schemas/relationship/>}]->(spiderman_V5B)
-green-goblin_rq2:{value:<http://example.org/#green-goblin>}
-Green_Goblin_NEm:{value:"Green Goblin",datatype:<http://www.w3.org/2001/XMLSchema#string>}
-(green-goblin_rq2)-[name {vocab:<http://xmlns.com/foaf/0.1/>}]->(Green_Goblin_NEm)
-spiderman_p81:{value:<http://example.org/#spiderman>}
-Человек-паук_wA1:{value:"Человек-паук",lang:"ru",datatype:<http://www.w3.org/2001/XMLSchema#string>}
-(spiderman_p81)-[name {vocab:<http://xmlns.com/foaf/0.1/>}]->(Человек-паук_wA1)
+green-goblin_mX3:{value:<http://example.org/#green-goblin>}
+Person_V5B:{value:<http://xmlns.com/foaf/0.1/Person>}
+(green-goblin_mX3)-[type {vocab:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>}]->(Person_V5B)
+spiderman_O6E:{value:<http://example.org/#spiderman>}
+Person_EQl:{value:<http://xmlns.com/foaf/0.1/Person>}
+(spiderman_O6E)-[type {vocab:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>}]->(Person_EQl)
+green-goblin_2kK:{value:<http://example.org/#green-goblin>}
+spiderman_mg9:{value:<http://example.org/#spiderman>}
+(green-goblin_2kK)-[enemyOf {vocab:<http://www.perceive.net/schemas/relationship/>}]->(spiderman_mg9)
+spiderman_RL0:{value:<http://example.org/#spiderman>}
+green-goblin_1QG:{value:<http://example.org/#green-goblin>}
+(spiderman_RL0)-[enemyOf {vocab:<http://www.perceive.net/schemas/relationship/>}]->(green-goblin_1QG)
+spiderman_v9L:{value:<http://example.org/#spiderman>}
+Spiderman_k2x:{value:"Spiderman",datatype:<http://www.w3.org/2001/XMLSchema#string>}
+(spiderman_v9L)-[name {vocab:<http://xmlns.com/foaf/0.1/>}]->(Spiderman_k2x)
+spiderman_JAg:{value:<http://example.org/#spiderman>}
+Человек-паук_noW:{value:"Человек-паук",lang:"ru",datatype:<http://www.w3.org/2001/XMLSchema#string>}
+(spiderman_JAg)-[name {vocab:<http://xmlns.com/foaf/0.1/>}]->(Человек-паук_noW)
+green-goblin_y5n:{value:<http://example.org/#green-goblin>}
+Green_Goblin_mZO:{value:"Green Goblin",datatype:<http://www.w3.org/2001/XMLSchema#string>}
+(green-goblin_y5n)-[name {vocab:<http://xmlns.com/foaf/0.1/>}]->(Green_Goblin_mZO)
+1_mOp:{value:"1",datatype:<http://www.w3.org/2001/XMLSchema#integer>}

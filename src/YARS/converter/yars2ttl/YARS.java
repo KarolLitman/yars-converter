@@ -99,19 +99,21 @@ public class YARS {
         for(relationship r:rlist){
 
             String vertexLang;
+            String vertexDatatype="";
             if(vertexLangMap.get(r.vertex_second)==null){
                 vertexLang="";
+                if(vertexDatatypeMap.get(r.vertex_second)==null){
+                    vertexDatatype="";
+                }
+                else{
+                    vertexDatatype=vertexDatatypeMap.get(r.vertex_second);
+                }
             }
             else{
                 vertexLang=vertexLangMap.get(r.vertex_second);
             }
-            String vertexDatatype;
-            if(vertexDatatypeMap.get(r.vertex_second)==null){
-                vertexDatatype="";
-            }
-            else{
-                vertexDatatype=vertexDatatypeMap.get(r.vertex_second);
-            }
+
+
             System.out.println(vertexValueMap.get(r.vertex_first)+" "+r.predicate+" "+vertexValueMap.get(r.vertex_second)+vertexLang+vertexDatatype+" .");
         }
 
