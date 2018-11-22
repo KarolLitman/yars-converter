@@ -113,7 +113,7 @@ public class YARS {
                     }
                     datatype = "^^" + datatype;
                 }
-                
+
             } else {
                 langtag = vertex_end.langtag;
                 langtag = "@" + (langtag.substring(1, langtag.length() - 1));
@@ -152,16 +152,20 @@ public class YARS {
 
 
         int i = 0;
+        String identifier = "";
         for (relationship r : rslist) {
-
-            String identifier = generateIdentifier(i++);
 
 
             System.out.println(":" + r.vertex_start.vertex_name + " :value " + vdMap.get(r.vertex_start.vertex_name).value + " .");
             System.out.println(":" + r.vertex_start.vertex_name + " " + r.predicate + " :" + r.vertex_end.vertex_name + " .");
-            r.any_key_value_Map.forEach((key, value) -> System.out.println(":" + r.vertex_start.vertex_name + " <" + identifier + "> " + value + " ." + "\n" +
-                    "<" + identifier + "> rdf:singletonProperty :" + key + " ."
-            ));
+            for (Map.Entry<String, String> entry : r.any_key_value_Map.entrySet()) {
+                identifier = generateIdentifier(i++);
+                String key = entry.getKey();
+                String value = entry.getValue();
+                System.out.println(":" + r.vertex_start.vertex_name + " <" + identifier + "> " + value + " ." + "\n" +
+                        "<" + identifier + "> rdf:singletonProperty :" + key + " ."
+                );
+            }
             System.out.println(":" + r.vertex_end.vertex_name + " :value " + vdMap.get(r.vertex_end.vertex_name).value + " .");
         }
     }
@@ -175,7 +179,7 @@ public class YARS {
             System.out.println(":" + r.vertex_start.vertex_name + " " + r.predicate + " :" + r.vertex_end.vertex_name + " .");
             System.out.println(":" + r.vertex_end.vertex_name + " :value " + vdMap.get(r.vertex_end.vertex_name).value + " .");
 
-            r.any_key_value_Map.forEach((key, value) -> System.out.println(":" + r.vertex_start.vertex_name + " :trust " + blanknode + " ." + "\n" +
+            r.any_key_value_Map.forEach((key, value) -> System.out.println(":" + r.vertex_start.vertex_name + " :" + key + " " + blanknode + " ." + "\n" +
                     blanknode + " :" + key + "-value " + value + " ."
             ));
         }
@@ -188,8 +192,16 @@ public class YARS {
             System.out.println(":" + r.vertex_start.vertex_name + " :value " + vdMap.get(r.vertex_start.vertex_name).value + " .");
             System.out.print("<<:" + r.vertex_start.vertex_name + " " + r.predicate + " :" + r.vertex_end.vertex_name + ">> ");
 
-            r.any_key_value_Map.forEach((key, value) -> System.out.print(":" + key + " " + value));
-            System.out.println(" .");
+            String key_values = "";
+
+
+            for (Map.Entry<String, String> entry : r.any_key_value_Map.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+                key_values += ":" + key + " " + value + " ; ";
+            }
+            key_values = key_values.substring(0, key_values.length() - 2);
+            System.out.println(key_values + ".");
 
             System.out.println(":" + r.vertex_end.vertex_name + " :value " + vdMap.get(r.vertex_end.vertex_name).value + " .");
         }
