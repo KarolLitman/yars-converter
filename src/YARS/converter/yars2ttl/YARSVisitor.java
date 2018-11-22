@@ -4,11 +4,14 @@ import YARS.*;
 
 public class YARSVisitor extends YARSBaseVisitor<String> {
 
-   public YARS y=new YARS();
+    public YARS y = new YARS();
 
+    boolean visitedRelationship = false;
+    boolean visitedvertexDeclaration = false;
 
 //    @Override public String visitStatement(YARSParser.StatementContext ctx) { return visitChildren(ctx); }
 //    @Override public String visitDirective(YARSParser.DirectiveContext ctx) { return visitChildren(ctx); }
+
 
     @Override public String visitPrefixDirective(YARSParser.PrefixDirectiveContext ctx) { return visitChildren(ctx); }
     @Override public String visitPname(YARSParser.PnameContext ctx) {
@@ -19,7 +22,7 @@ public class YARSVisitor extends YARSBaseVisitor<String> {
 
 //        System.out.println(super.visit(ctx.parent));
 
-        y.addprefixDirective(prefix,iri);
+//        y.addprefixDirective(prefix,iri);
         return "";
     }
 
@@ -51,26 +54,32 @@ public class YARSVisitor extends YARSBaseVisitor<String> {
         String second_vertex=ctx.getChild(9).getText();
 
         String prefix=ctx.getChild(5).getChild(0).getText();
-String predicate="";
-                if(prefix.charAt(0)==':'){
-    prefix=prefix.substring(1,prefix.length()-1);
-                            String pn_local=ctx.getChild(5).getChild(1).getText();
-                     predicate=prefix+":"+pn_local;
-                }
-else {
+        String predicate = "";
+        if (prefix.charAt(0) == ':') {
+            prefix = prefix.substring(1, prefix.length() - 1);
+            String pn_local = ctx.getChild(5).getChild(1).getText();
+            predicate = prefix + ":" + pn_local;
+        } else {
 //System.out.println(ctx.getChild(5).getChild(0));
 
-                    String pn_local = ctx.getChild(5).getChild(0).getText();
-                    String iri = ctx.getChild(5).getChild(2).getChild(2).getText();
-                     predicate = iri.substring(0, iri.length() - 1) + pn_local + ">";
-                }
-        y.addrelationship(first_vertex,predicate,second_vertex);
+            String pn_local = ctx.getChild(5).getChild(0).getText();
+            String iri = ctx.getChild(5).getChild(2).getChild(2).getText();
+            predicate = iri.substring(0, iri.length() - 1) + pn_local + ">";
+        }
+//        y.addrelationship(first_vertex,predicate,second_vertex);
 
 
-        return "";
-
+//        System.out.println( "iteracja1 "+ iteracja++);
+        return visitChildren(ctx);
 
     }
+
+    @Override
+    public String visitPredicate(YARSParser.PredicateContext ctx) {
+//System.out.println("iteracja2 "+ iteracja2++);
+        return "test";
+    }
+
 
 
     @Override public String visitPair_value_key(YARSParser.Pair_value_keyContext ctx) {
@@ -87,8 +96,9 @@ else {
 //            vertexvalue+="@"+vertexvalueLang.replace("\"", "");
 //        }
 
-        y.addVertexValue(vertexname,vertexvalue);
+//        y.addVertexValue(vertexname,vertexvalue);
 
+//        return "iteracja2 "+iteracja2+++"\n";
         return "";
     }
 
@@ -110,7 +120,7 @@ else {
 //            vertexvalue+="@"+vertexvalueLang.replace("\"", "");
 //        }
 
-        y.addVertexLang(vertexname,vertexlang);
+//        y.addVertexLang(vertexname,vertexlang);
 
         return "";
 
@@ -135,7 +145,7 @@ else {
 //            vertexvalue+="@"+vertexvalueLang.replace("\"", "");
 //        }
 
-        y.addVertexDatatype(vertexname,vertexdatatype);
+//        y.addVertexDatatype(vertexname,vertexdatatype);
 
         return "";
     }
@@ -165,4 +175,3 @@ else {
 
 
 }
-
