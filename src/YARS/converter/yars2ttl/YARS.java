@@ -83,13 +83,7 @@ public class YARS {
     public List<relationship> rslist = new ArrayList<>();
 //    Hashids hashids = new Hashids("saltblanknodes");
 
-
-//    @Override
-//    public String toString() {
-//        return Arrays.toString(vdlist.toArray());
-//    }
-
-
+    
     private String generateIdentifier(int i) {
         return i < 0 ? "" : generateIdentifier((i / 26) - 1) + (char) (97 + i % 26);
     }
@@ -143,11 +137,6 @@ public class YARS {
             r.any_key_value_Map.forEach((key, value) -> System.out.println(blanknode + " :" + key + " " + value + " ."));
 
 
-//            _:s rdf:subject :x .
-//            _:s rdf:predicate <http://xmlns.com/foaf/0.1/name> .
-//            _:s rdf:object :z .
-//            _:s :trust 0.6 .
-
         }
 
     }
@@ -162,11 +151,6 @@ public class YARS {
                     "<y> rdf:singletonProperty :" + key + " ."
             ));
             System.out.println(":" + r.vertex_end.vertex_name + " :value " + vdMap.get(r.vertex_end.vertex_name).value + " .");
-//:x :value <http://example.org/p#j> .
-//:x <http://xmlns.com/foaf/0.1/name> :z .
-//:x <y> 0.6 .
-//<y> rdf:singletonProperty :trust .
-//:z :value "John Smith" .
         }
     }
 
@@ -183,17 +167,9 @@ public class YARS {
                     blanknode + " :" + key + "-value " + value + " ."
             ));
         }
-//:x :value <http://example.org/p#j> .
-//:x <http://xmlns.com/foaf/0.1/name> :z .
-//:z :value "John Smith" .
-//:x :trust _:r .
-//_:r :trust-value 0.6 .
     }
 
     void buildRDFstar() {
-//:x :value <http://example.org/p#j> .
-//<<:x <http://xmlns.com/foaf/0.1/name> :z>> :trust  0.6 .
-//:z :value "John Smith" .
 
         for (relationship r : rslist) {
 
@@ -208,10 +184,6 @@ public class YARS {
     }
 
     void buildNamedGraphs() {
-//:x :value <http://example.org/p#j> _:n .
-//:x <http://xmlns.com/foaf/0.1/name> :z _:n .
-//:z :value "John Smith" _:n .
-//_:n :trust  0.6 .
 
         int i = 0;
 
