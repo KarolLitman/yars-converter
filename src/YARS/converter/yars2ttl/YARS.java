@@ -1,7 +1,5 @@
 package YARS.converter.yars2ttl;
 
-import org.hashids.Hashids;
-
 import java.util.*;
 
 class prefixDirective {
@@ -81,7 +79,6 @@ public class YARS {
     public List<prefixDirective> pdlist = new ArrayList<>();
     public HashMap<String, vertexDeclaration> vdMap = new HashMap();
     public List<relationship> rslist = new ArrayList<>();
-//    Hashids hashids = new Hashids("saltblanknodes");
 
 
     private String generateIdentifier(int i) {
@@ -130,6 +127,21 @@ public class YARS {
     void buildRDFreification() {
 
         int i = 0;
+        boolean usedPrefixRDF = false;
+
+        for (prefixDirective p : pdlist) {
+            System.out.println("@prefix " + p.pname + ": <" + p.CONTEXT + "> .");
+
+            if (p.pname == "rdf") {
+                usedPrefixRDF = true;
+            }
+
+        }
+
+        if (!usedPrefixRDF) {
+            System.out.println("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .");
+        }
+        System.out.println("@prefix : <urn:pg:1.0:> .");
 
 
         for (relationship r : rslist) {
@@ -138,9 +150,9 @@ public class YARS {
 
 
             System.out.println(blanknode + " rdf:type rdf:Statement .");
-            System.out.println(blanknode + " rdf:subject :" + r.vertex_start.vertex_name + " .");
+            System.out.println(blanknode + " rdf:subject " + vdMap.get(r.vertex_start.vertex_name).value + " .");
             System.out.println(blanknode + " rdf:predicate " + r.predicate + " .");
-            System.out.println(blanknode + " rdf:object :" + r.vertex_end.vertex_name + " .");
+            System.out.println(blanknode + " rdf:object " + vdMap.get(r.vertex_end.vertex_name).value + " .");
             r.any_key_value_Map.forEach((key, value) -> System.out.println(blanknode + " :" + key + " " + value + " ."));
 
 
@@ -149,6 +161,12 @@ public class YARS {
     }
 
     void buildSingletonProperty() {
+
+        for (prefixDirective p : pdlist) {
+            System.out.println("@prefix " + p.pname + ": <" + p.CONTEXT + "> .");
+        }
+
+        System.out.println("@prefix : <urn:pg:1.0:> .");
 
 
         int i = 0;
@@ -171,6 +189,14 @@ public class YARS {
     }
 
     void buildNaryRelation() {
+
+        for (prefixDirective p : pdlist) {
+            System.out.println("@prefix " + p.pname + ": <" + p.CONTEXT + "> .");
+        }
+
+        System.out.println("@prefix : <urn:pg:1.0:> .");
+
+
         int i = 0;
         for (relationship r : rslist) {
             String blanknode = "_:" + generateIdentifier(i++);
@@ -186,6 +212,13 @@ public class YARS {
     }
 
     void buildRDFstar() {
+
+        for (prefixDirective p : pdlist) {
+            System.out.println("@prefix " + p.pname + ": <" + p.CONTEXT + "> .");
+        }
+
+        System.out.println("@prefix : <urn:pg:1.0:> .");
+
 
         for (relationship r : rslist) {
 
@@ -208,6 +241,13 @@ public class YARS {
     }
 
     void buildNamedGraphs() {
+
+        for (prefixDirective p : pdlist) {
+            System.out.println("@prefix " + p.pname + ": <" + p.CONTEXT + "> .");
+        }
+
+        System.out.println("@prefix : <urn:pg:1.0:> .");
+
 
         int i = 0;
 
